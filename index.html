@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Shop</title>
+    <style>
+      * {
+        font-family: sans-serif;
+        text-align: center;
+      }
+
+      .title{
+        width: fit-content;
+        margin: 20px auto;
+      }
+
+      .card {
+        border: 2px solid #cbcbcb;
+        border-radius: 5px;
+        width: 150px;
+        margin: 20px auto;
+      }
+
+      .food-form {
+        width: 500px;
+        display: grid;
+        gap: 20px;
+        grid-template-columns: min-content 1fr;
+        margin: 20px auto;
+      }
+
+      button {
+        grid-column: 1 / -1;
+      }
+
+      .view-all-food {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        width: 500px;
+        margin: auto;
+        gap: 20px;
+      }
+
+      .view-all-food .card {
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1 class="title">DomNomNom</h1>
+    </header>
+
+    <main>
+      <section>
+        <h2 class="title">Random food</h2>
+        <div class="random-food"></div>
+        <button>Next</button>
+      </section>
+
+      <section>
+        <h2 class="title">View All food</h2>
+        <div class="view-all-food">...</div>
+      </section>
+
+      <section>
+        <h2 class="title">Add food</h2>
+
+        <form class="food-form">
+          <label for="emoji">Emoji</label>
+          <input type="text" name="emoji" id="img" />
+          <label for="name">Name</label>
+          <input type="text" name="name" id="name" />
+          <label for="price">Price</label>
+          <input type="text" name="name" id="price" />
+          <button>Submit</button>
+        </form>
+      </section>
+    </main>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
