@@ -33,9 +33,22 @@ const randomFood = document.querySelector(".random-food");
 randomFood.appendChild(createFoodCard(foodStock[0]));
 
 // 1. DISPLAY RANDOM CARD
-// TODO: WHEN A USER CLICKS ON THE NEXT BUTTON
+// WHEN A USER CLICKS ON THE NEXT BUTTON
 // - THE DISPLAYED CARD WILL BE REMOVED.
 // - A NEW RANDOM FOOD CARD SHOULD BE DISPLAYED.
+
+const nextRandomFoodButton = document.querySelector("button");
+
+nextRandomFoodButton.addEventListener("click", () => {
+  const card = document.querySelector(".card");
+
+  const randomIndex = Math.floor(Math.random() * foodStock.length);
+  const fragment = document.createDocumentFragment();
+  const divCard = createFoodCard(foodStock[randomIndex]);
+  fragment.appendChild(divCard)
+
+  randomFood.replaceChild(fragment, card);
+});
 
 // 2. DISPLAY ALL
 // TODO: THE view-all-food ELEMENT IS EMPTY
