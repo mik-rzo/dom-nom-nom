@@ -61,7 +61,7 @@ const viewAllFoodElement = document.querySelector(".view-all-food");
 let foodCards = document.createDocumentFragment();
 for (const food of foodStock) {
   const divCard = createFoodCard(food);
-  foodCards.appendChild(divCard)
+  foodCards.appendChild(divCard);
 }
 
 viewAllFoodElement.replaceChildren(foodCards);
@@ -81,8 +81,13 @@ titles.forEach((title) => {
   });
 });
 
-// TODO:
 // - WHEN THE MOUSE LEAVES AN ELEMENT WITH A CLASS OF title, CHANGE THE TEXT TO A DIFFERENT COLOR
+
+titles.forEach((title) => {
+  title.addEventListener("mouseleave", (event) => {
+    event.target.style.color = "purple";
+  });
+});
 
 // 4. ADD FOOD & USE THE EVENT
 // TODO: WHEN A FORM IS SUBMITTED, GET THE VALUES, CREATE A FOOD OBJECT, UPDATE THE foodStock, AND DISPLAY
