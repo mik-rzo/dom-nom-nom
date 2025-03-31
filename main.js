@@ -58,13 +58,22 @@ nextRandomFoodButton.addEventListener("click", () => {
 
 const viewAllFoodElement = document.querySelector(".view-all-food");
 
-let foodCards = document.createDocumentFragment();
-for (const food of foodStock) {
-  const divCard = createFoodCard(food);
-  foodCards.appendChild(divCard);
+const createFoodCardsList = () => {
+  const foodCards = document.createDocumentFragment();
+
+  for (const food of foodStock) {
+    const divCard = createFoodCard(food);
+    foodCards.appendChild(divCard);
+  }
+
+  return foodCards;
 }
 
-viewAllFoodElement.replaceChildren(foodCards);
+const refreshViewAllFoodElement = () => {
+  viewAllFoodElement.replaceChildren(createFoodCardsList());
+}
+
+refreshViewAllFoodElement();
 
 // 3. THE EVENT
 // THE CODE BELOW
@@ -77,7 +86,7 @@ titles.forEach((title) => {
   title.addEventListener("mouseover", (event) => {
     console.dir(event);
     console.log(event.target);
-    event.target.style.color = "orange";
+    event.target.style.color = "blue";
   });
 });
 
@@ -90,7 +99,7 @@ titles.forEach((title) => {
 });
 
 // 4. ADD FOOD & USE THE EVENT
-// TODO: WHEN A FORM IS SUBMITTED, GET THE VALUES, CREATE A FOOD OBJECT, UPDATE THE foodStock, AND DISPLAY
+// WHEN A FORM IS SUBMITTED, GET THE VALUES, CREATE A FOOD OBJECT, UPDATE THE foodStock, AND DISPLAY
 const form = document.querySelector(".food-form");
 
 form.addEventListener("submit", (event) => {
@@ -99,12 +108,20 @@ form.addEventListener("submit", (event) => {
   console.log(event);
 
   // - HOW DO YOU GET A INPUT VALUE(S) FROM A FORM EVENT?
+  const foodImg = document.querySelector("#img").value;
+  const foodName = document.querySelector("#name").value;
+  const foodPrice = document.querySelector("#price").value;
 
   const foodObject = {};
   // - HOW DO YOU ADD THE VALUES TO THE foodObject?
-  foodObject.name = "";
-  foodObject.price = "";
-  foodObject.img = "";
+  foodObject.name = foodName;
+  foodObject.price = foodPrice;
+  foodObject.img = foodImg;
 
   // HOW CAN YOU UPDATE THE view-all-food CONTAINER TO HAVE THE NEW foodObject?
+  foodStock.push(foodObject);
+  refreshViewAllFoodElement();
+
+  // RESET FORM
+  form.reset();
 });
