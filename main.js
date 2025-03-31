@@ -51,10 +51,20 @@ nextRandomFoodButton.addEventListener("click", () => {
 });
 
 // 2. DISPLAY ALL
-// TODO: THE view-all-food ELEMENT IS EMPTY
+// THE view-all-food ELEMENT IS EMPTY
 // - HOW CAN YOU REMOVE THE ...?
 // - HOW CAN YOU ITERATE THROUGH THE foodStock ARRAY AND CREATE A CARD FOR EACH?
 // - HOW CAN YOU ADD THEM TO THE HTML ELEMENT?
+
+const viewAllFoodElement = document.querySelector(".view-all-food");
+
+let foodCards = document.createDocumentFragment();
+for (const food of foodStock) {
+  const divCard = createFoodCard(food);
+  foodCards.appendChild(divCard)
+}
+
+viewAllFoodElement.replaceChildren(foodCards);
 
 // 3. THE EVENT
 // THE CODE BELOW
